@@ -244,18 +244,7 @@ into recruiter
 email)
 values
 ('r028','Dana','Faber','8545712639','Contractor','c002','dana@abc.com');
-insert /*+ ignore_row_on_dupkey_index ( recruiter ( recruiter_id ) ) */
-into recruiter
-(recruiter_id,first_name,last_name,contact_number,candidate_type,company_id,user_account_
-email)
-values
-('r029','Hilary','CLinton','9645729636','Contractor','c001','hilary@xyzcompnay.com');
-insert /*+ ignore_row_on_dupkey_index ( recruiter ( recruiter_id ) ) */
-into recruiter
-(recruiter_id,first_name,last_name,contact_number,candidate_type,company_id,user_account_
-email)
-values
-('r030','Hilary','CLinton','9645729636','Intern','c001','hilary@xyzcompnay.com');
+
 update recruiter rr set candidate_type='Contractor' where company_id='c015';
 select * from recruiter;
 delete from recruiter where company_id='c015';
