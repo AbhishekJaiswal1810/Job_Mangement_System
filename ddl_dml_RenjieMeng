@@ -1,0 +1,305 @@
+/*Creating the applicant profile table*/
+/
+declare
+v_sql LONG;
+begin
+v_sql:='create table applicant_profile (
+applicants_id VARCHAR2(20) not null,
+first_name VARCHAR2(30) not null,
+middle_name VARCHAR2(30),
+last_name VARCHAR2(30) not null,
+street_name VARCHAR2(50) not null,
+city VARCHAR2(20) not null,
+state VARCHAR2(20) not null,
+zip_code VARCHAR2(15) not null,
+contect_number VARCHAR2(20),
+yoe number not null,
+target_industry VARCHAR2(30) not null, 
+current_company VARCHAR2(30),
+current_salary number,
+highest_education VARCHAR2(20),
+"race/ethnicity" VARCHAR2(50),
+veteran_status VARCHAR2(20),
+disability_status VARCHAR2(20),
+user_account_email VARCHAR2(30) not null,
+constraint applicant_profile_pk primary key (applicants_id),
+constraint fk_user_account foreign key (user_account_email) references user_account(email) on delete cascade
+)';
+  execute immediate v_sql;
+  exception when others then
+    if SQLCODE = -955 then null; else raise; end if;
+end;
+/
+
+/*Insert data*/
+insert into applicant_profile
+select 
+    'a1' as applicants_id, 'Tilly' as first_name, null as middle_name, 'Simon' as last_name,
+    '459 Pickens Way' as street_name, 'Euless' as city, 'TX' as state, '76039' as zip_code,
+    '682-305-0394' as contect_number, 0 as yoe, 'Education' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, cast(NULL as number) as current_salary,
+    'Bachelor' as highest_education, 'Hispanic and Latino Americans' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'dharini@abc.com' as user_account_email
+    from dual
+union 
+select 
+    'a2' as applicants_id, 'Tilly' as first_name, null as middle_name, 'Simon' as last_name,
+    '459 Pickens Way' as street_name, 'Euless' as city, 'TX' as state, '76039' as zip_code,
+    '682-305-0394' as contect_number, 0 as yoe, 'Tech' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, cast(NULL as number) as current_salary,
+    'Bachelor' as highest_education, 'Hispanic and Latino Americans' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'dharini@abc.com' as user_account_email
+    from dual
+union
+select 
+    'a3' as applicants_id, 'Tilly' as first_name, null as middle_name, 'Simon' as last_name,
+    '459 Pickens Way' as street_name, 'Euless' as city, 'TX' as state, '76039' as zip_code,
+    '682-305-0394' as contect_number, 0 as yoe, 'Medication' as target_industry, cast(NULL as varchar2(30)) as current_company, cast(NULL as number) as current_salary,
+    'Bachelor' as highest_education, 'Hispanic and Latino Americans' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'dharini@abc.com' as user_account_email
+    from dual
+union
+select 
+    'a4' as applicants_id, 'Courtnie' as first_name, null as middle_name, 'Callahan' as last_name,
+    '2243 Jones Street' as street_name, 'Arlingt' as city, 'TX' as state, '76011' as zip_code,
+    '817-528-3045' as contect_number, 5 as yoe, 'Finance' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 80000 as current_salary,
+    'Bachelor' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'drishti@xyz.com' as user_account_email
+    from dual
+union 
+select 
+    'a5' as applicants_id, 'Courtnie' as first_name, null as middle_name, 'Callahan' as last_name,
+    '2243 Jones Street' as street_name, 'Arlingt' as city, 'TX' as state, '76011' as zip_code,
+    '817-528-3045' as contect_number, 2 as yoe, 'Tech' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 80000 as current_salary,
+    'Bachelor' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'drishti@xyz.com' as user_account_email
+    from dual
+union 
+select 
+    'a6' as applicants_id, 'Farah' as first_name, null as middle_name, 'Weaver' as last_name,
+    '415 Gateway Road' as street_name, 'Portland' as city, 'OR' as state, '97214' as zip_code,
+    '503-313-2085' as contect_number, 1 as yoe, 'Finance' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 220000 as current_salary,
+    'Phd' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'chetna@cba.com' as user_account_email
+    from dual
+    union 
+select 
+    'a7' as applicants_id, 'Farah' as first_name, null as middle_name, 'Weaver' as last_name,
+    '415 Gateway Road' as street_name, 'Portland' as city, 'OR' as state, '97214' as zip_code,
+    '503-313-2085' as contect_number, 2 as yoe, 'Car' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 220000 as current_salary,
+    'Phd' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'chetna@cba.com' as user_account_email
+    from dual
+union 
+select 
+    'a8' as applicants_id, 'Farah' as first_name, null as middle_name, 'Weaver' as last_name,
+    '415 Gateway Road' as street_name, 'Portland' as city, 'OR' as state, '97214' as zip_code,
+    '503-313-2085' as contect_number, 5 as yoe, 'Commerce' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 220000 as current_salary,
+    'Phd' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'chetna@cba.com' as user_account_email
+    from dual
+union 
+select 
+    'a9' as applicants_id, 'Jacqueline' as first_name, null as middle_name, 'Sumner' as last_name,
+    '896 Elk Rd Little' as street_name, 'Tucson' as city, 'AZ' as state, '85705' as zip_code,
+    '520-786-7263' as contect_number, 5 as yoe, 'Chemical' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 90000 as current_salary,
+    'Master' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'nancy@xyzcompnay.com' as user_account_email
+    from dual
+union
+select 
+    'a10' as applicants_id, 'Jacqueline' as first_name, null as middle_name, 'Sumner' as last_name,
+    '896 Elk Rd Little' as street_name, 'Tucson' as city, 'AZ' as state, '85705' as zip_code,
+    '520-786-7263' as contect_number, 2 as yoe, 'Agriculture' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 90000 as current_salary,
+    'Master' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'nancy@xyzcompnay.com' as user_account_email
+    from dual   
+union
+select 
+    'a11' as applicants_id, 'Burhan' as first_name, 'Simon' as middle_name, 'Bate' as last_name,
+    '2173 Queens Lane' as street_name, 'Lynchburg' as city, 'VA' as state, '24504' as zip_code,
+    '434-229-6150' as contect_number, 2 as yoe, 'Construction' as target_industry, 
+    cast(NULL as varchar2(30)) as current_company, 50000 as current_salary,
+    'Bachelor' as highest_education, 'Black or African American' as "race/ethnicity",
+    'Protected veteran' as veteran_status, 'Vision Disability' as disability_status, 'binod@gogle.com' as user_account_email
+    from dual
+union
+select 
+    'a12' as applicants_id, 'Yara' as first_name, null as middle_name, 'Cornish' as last_name,
+    '923 Hiddenview Drive' as street_name, 'Philadelphia' as city, 'VA' as state, '24504' as zip_code,
+    '434-229-6150' as contect_number, 2 as yoe, 'Commerce' as target_industry, 
+    null as current_company, 86000 as current_salary,
+    'Bachelor' as highest_education, 'Black or African American' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'charu@abc.com' as user_account_email
+    from dual
+union
+select 
+    'a13' as applicants_id, 'Yara' as first_name, null as middle_name, 'Cornish' as last_name,
+    '923 Hiddenview Drive' as street_name, 'Philadelphia' as city, 'VA' as state, '24504' as zip_code,
+    '434-229-6150' as contect_number, 1 as yoe, 'Education' as target_industry, 
+    'Bluestar,INC' as current_company, 86000 as current_salary,
+    'Bachelor' as highest_education, 'Black or African American' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'charu@abc.com' as user_account_email
+    from dual
+union
+select 
+    'a14' as applicants_id, 'Evan' as first_name, null as middle_name, 'Pitt' as last_name,
+    '4404 D Street' as street_name, 'Warren' as city, 'MI' as state, '48092' as zip_code,
+    '586-916-4215' as contect_number, 4 as yoe, 'Government' as target_industry, 
+    null as current_company, 64000 as current_salary,
+    'High school' as highest_education, 'Native Hawaiian or Other Pacific Islander' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'Hearing Disability' as disability_status, 'bhawna@abc.com' as user_account_email
+    from dual
+union
+select 
+    'a15' as applicants_id, 'Malik' as first_name, 'John' as middle_name, 'Mendoza' as last_name,
+    '1897 Berry Street' as street_name, 'Pueblo' as city, 'CO' as state, '81003' as zip_code,
+    '719-250-5257' as contect_number, 3 as yoe, 'Tech' as target_industry, 
+    null as current_company, 114000 as current_salary,
+    'Phd' as highest_education, 'White' as "race/ethnicity",
+    'Protected veteran' as veteran_status, 'NA' as disability_status, 'anny@abc.com' as user_account_email
+    from dual   
+union
+select 
+    'a16' as applicants_id, 'Ronny' as first_name, 'Cole' as middle_name, 'Rogers' as last_name,
+    '3371 Swick Hill Street' as street_name, 'New Orleans' as city, 'LA' as state, '70113' as zip_code,
+    '504-654-1038' as contect_number, 11 as yoe, 'Education' as target_industry, 
+    'Coolitdown,INC' as current_company, 149000 as current_salary,
+    'Phd' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'aish@abc.com' as user_account_email
+    from dual 
+union
+select 
+    'a17' as applicants_id, 'Jaydan ' as first_name, null as middle_name, 'Noel' as last_name,
+    '288 West Fork Street' as street_name, 'Fallon' as city, 'MT' as state, '59326' as zip_code,
+    '406-938-8738' as contect_number, 4 as yoe, 'Medication' as target_industry, 
+    null as current_company, 76000 as current_salary,
+    'Bachelor' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'atisha@abc.com' as user_account_email
+    from dual    
+union
+--
+select 
+    'a18' as applicants_id, 'Shannon' as first_name, null as middle_name, 'Charlton' as last_name,
+    '4662 New Creek Road' as street_name, 'Anniston' as city, 'AL' as state, '36203' as zip_code,
+    '256-689-4442' as contect_number, 5 as yoe, 'Tech' as target_industry, 
+    null as current_company, 179000 as current_salary,
+    'Master' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'binod@gogle.com' as user_account_email
+    from dual  
+union
+select 
+    'a19' as applicants_id, 'Shannon' as first_name, null as middle_name, 'Charlton' as last_name,
+    '4662 New Creek Road' as street_name, 'Anniston' as city, 'AL' as state, '36203' as zip_code,
+    '256-689-4442' as contect_number, 2 as yoe, 'Commerce' as target_industry, 
+    null as current_company, 179000 as current_salary,
+    'Master' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'binod@gogle.com' as user_account_email
+    from dual  
+union
+select 
+    'a20' as applicants_id, 'Shannon' as first_name, null as middle_name, 'Charlton' as last_name,
+    '4662 New Creek Road' as street_name, 'Anniston' as city, 'AL' as state, '36203' as zip_code,
+    '256-689-4442' as contect_number, 1 as yoe, 'Finance' as target_industry, 
+    null as current_company, 179000 as current_salary,
+    'Master' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'binod@gogle.com' as user_account_email
+    from dual  
+union
+select 
+    'a21' as applicants_id, 'Jie' as first_name, null as middle_name, 'Joe' as last_name,
+    '364 Main Street' as street_name, 'Seattle' as city, 'WA' as state, '98109' as zip_code,
+    '206-714-9420' as contect_number, 2 as yoe, 'Food' as target_industry, 
+    null as current_company, 149000 as current_salary,
+    'Master' as highest_education, 'Asian' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'ajay@gogle.com' as user_account_email
+    from dual  
+union
+select 
+    'a22' as applicants_id, 'Ty' as first_name, 'Malik' as middle_name, 'Moran' as last_name,
+    '850 Lindale Avenue' as street_name, 'Hayward' as city, 'CA' as state, '94545' as zip_code,
+    '510-363-5627' as contect_number, 1 as yoe, 'Education' as target_industry, 
+    'Breadsplit,INC' as current_company, 80000 as current_salary,
+    'Phd' as highest_education, 'Black or African American' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'aman@abc.com' as user_account_email
+    from dual  
+union
+select 
+    'a23' as applicants_id, 'Ty' as first_name, 'Malik' as middle_name, 'Moran' as last_name,
+    '850 Lindale Avenue' as street_name, 'Hayward' as city, 'CA' as state, '94545' as zip_code,
+    '510-363-5627' as contect_number, 1 as yoe, 'Finance' as target_industry, 
+    'Breadsplit,INC' as current_company, 80000 as current_salary,
+    'Phd' as highest_education, 'Black or African American' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'aman@abc.com' as user_account_email
+    from dual  
+union
+select 
+    'a24' as applicants_id, 'Kourtney' as first_name, null as middle_name, 'Duran' as last_name,
+    '1925 Victoria Street' as street_name, 'Baton Rouge' as city, 'LA' as state, '70806' as zip_code,
+    '225-953-0573' as contect_number, 2 as yoe, 'Media' as target_industry, 
+    null as current_company, 49000 as current_salary,
+    'High school' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'abhishek@jimail.com' as user_account_email
+    from dual  
+union
+select 
+    'a25' as applicants_id, 'Kourtney' as first_name, null as middle_name, 'Duran' as last_name,
+    '1925 Victoria Street' as street_name, 'Baton Rouge' as city, 'LA' as state, '70806' as zip_code,
+    '225-953-0573' as contect_number, 0.5 as yoe, 'Public service' as target_industry, 
+    null as current_company, 49000 as current_salary,
+    'High school' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'abhishek@jimail.com' as user_account_email
+    from dual  
+union
+select 
+    'a26' as applicants_id, 'Kourtney' as first_name, null as middle_name, 'Duran' as last_name,
+    '1925 Victoria Street' as street_name, 'Baton Rouge' as city, 'LA' as state, '70806' as zip_code,
+    '225-953-0573' as contect_number, 1 as yoe, 'Oil' as target_industry, 
+    null as current_company, 49000 as current_salary,
+    'High school' as highest_education, 'White' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'abhishek@jimail.com' as user_account_email
+    from dual  
+union
+select 
+    'a27' as applicants_id, 'Wren ' as first_name, 'Cole' as middle_name, 'Grant' as last_name,
+    '1290 Grey Fox Farm Road' as street_name, 'Houston' as city, 'TX' as state, '77032' as zip_code,
+    '281-928-7342' as contect_number, 11 as yoe, 'Tech' as target_industry, 
+    'Nevermind,INC' as current_company, 169000 as current_salary,
+    'Master' as highest_education, 'Hispanic or Latino' as "race/ethnicity",
+    'Protected veteran' as veteran_status, 'Vision Disability' as disability_status, 'jeremy@abc.com' as user_account_email
+    from dual  
+union
+select 
+    'a28' as applicants_id, 'Wren ' as first_name, 'Cole' as middle_name, 'Grant' as last_name,
+    '1290 Grey Fox Farm Road' as street_name, 'Houston' as city, 'TX' as state, '77032' as zip_code,
+    '281-928-7342' as contect_number, 4 as yoe, 'Finance' as target_industry, 
+    'Nevermind,INC' as current_company, 169000 as current_salary,
+    'Master' as highest_education, 'Hispanic or Latino' as "race/ethnicity",
+    'Protected veteran' as veteran_status, 'Vision Disability' as disability_status, 'jeremy@abc.com' as user_account_email
+    from dual  
+union
+select 
+    'a29' as applicants_id, 'Brodie' as first_name, 'Coleman' as middle_name, 'Dawson' as last_name,
+    '1186 Public Works Drive' as street_name, 'Blountville' as city, 'TN' as state, '37617' as zip_code,
+    '504-654-1038' as contect_number, 6 as yoe, 'Education' as target_industry, 
+    'Donteatme,INC' as current_company, 49000 as current_salary,
+    'Bachelor' as highest_education, 'Hispanic or Latino' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'burhan@xyz.com' as user_account_email
+    from dual
+union
+select 
+    'a30' as applicants_id, 'Brodie' as first_name, 'Coleman' as middle_name, 'Dawson' as last_name,
+    '1186 Public Works Drive' as street_name, 'Blountville' as city, 'TN' as state, '37617' as zip_code,
+    '504-654-1038' as contect_number, 2 as yoe, 'Commerce' as target_industry, 
+    'Donteatme,INC' as current_company, 49000 as current_salary,
+    'Bachelor' as highest_education, 'Hispanic or Latino' as "race/ethnicity",
+    'Not a veteran' as veteran_status, 'NA' as disability_status, 'burhan@xyz.com' as user_account_email
+    from dual
+;
