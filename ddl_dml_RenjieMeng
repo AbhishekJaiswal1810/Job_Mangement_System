@@ -1,36 +1,3 @@
-/*Creating the applicant profile table*/
-/
-declare
-v_sql LONG;
-begin
-v_sql:='create table applicant_profile (
-applicants_id VARCHAR2(20) not null,
-first_name VARCHAR2(30) not null,
-middle_name VARCHAR2(30),
-last_name VARCHAR2(30) not null,
-street_name VARCHAR2(50) not null,
-city VARCHAR2(20) not null,
-state VARCHAR2(20) not null,
-zip_code VARCHAR2(15) not null,
-contect_number VARCHAR2(20),
-yoe number not null,
-target_industry VARCHAR2(30) not null, 
-current_company VARCHAR2(30),
-current_salary number,
-highest_education VARCHAR2(20),
-"race/ethnicity" VARCHAR2(50),
-veteran_status VARCHAR2(20),
-disability_status VARCHAR2(20),
-user_account_email VARCHAR2(30) not null,
-constraint applicant_profile_pk primary key (applicants_id),
-constraint fk_user_account foreign key (user_account_email) references user_account(email) on delete cascade
-)';
-  execute immediate v_sql;
-  exception when others then
-    if SQLCODE = -955 then null; else raise; end if;
-end;
-/
-
 /*Insert data*/
 insert into applicant_profile
 select 
