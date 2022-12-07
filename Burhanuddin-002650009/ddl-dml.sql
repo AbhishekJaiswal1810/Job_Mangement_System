@@ -55,6 +55,20 @@ end if;
 end;
 /
 
+/*user_login_details table created*/
+declare v_sql LONG;
+begin
+v_sql := 'CREATE TABLE user_login_details(
+loginid VARCHAR2(30),
+login_time VARCHAR2(20),
+action VARCHAR(20)
+)';
+execute immediate v_sql;
+exception when others then
+if SQLCODE = -955 then null; else raise; end if;
+end;
+/
+
 
 /*Creating the table applicant_skill*/
 CREATE TABLE applicant_skill(
