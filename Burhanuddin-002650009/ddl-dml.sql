@@ -110,7 +110,7 @@ end;
 /
 
 
-/*Inserting the data into the table applicant_skill*/
+/*Inserting the data into the table skill_set*/
 insert /*+ ignore_row_on_dupkey_index ( skill_set ( id ) ) */ into skill_set
 (id, skill_name)
 values
