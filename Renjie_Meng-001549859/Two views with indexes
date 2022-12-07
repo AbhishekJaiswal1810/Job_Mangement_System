@@ -15,3 +15,6 @@ create or replace view applicant_salary as
 select city, avg(current_salary) as avg_salary
 from applicant_profile
 group by city;
+
+create index user_2022 
+on user_account(EXTRACT(YEAR from registration_date));
