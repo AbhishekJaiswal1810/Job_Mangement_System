@@ -1,4 +1,4 @@
-/*Inserting the data into the table user_type*/
+/*Inserting the data into the user_type table*/
 insert /*+ ignore_row_on_dupkey_index ( user_type( id) ) */
 into user_type select '1','Job Applicant' from dual union
 select '2','Recruiter' from dual;
