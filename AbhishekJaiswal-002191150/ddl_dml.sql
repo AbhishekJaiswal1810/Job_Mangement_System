@@ -1,3 +1,22 @@
+/*Creating the table applicant_skill*/
+
+declare
+v_sql LONG;
+begin
+v_sql:='CREATE TABLE applicant_skill(
+applicant_skill_id number default applicant_skill_sequence.nextVal not null,
+skill_set_id number NOT NULL,
+skill_level VARCHAR2(20) NOT NULL,
+applicant_applicants_id number NOT NULL,
+CONSTRAINT Applicant_skill_Skill_set_FK FOREIGN KEY(skill_set_id) REFERENCES skill_set(id) on delete cascade,
+CONSTRAINT Applicant_skill_Applicant_FK FOREIGN KEY(applicant_applicants_id) REFERENCES applicant_profile(applicants_id) on delete cascade,
+constraint applicant_skill_pk primary key (applicant_skill_id)
+)';
+  execute immediate v_sql;
+  exception when others then
+    if SQLCODE = -955 then null; else raise; end if;
+end;
+/
 
 declare
 v_sql LONG;
