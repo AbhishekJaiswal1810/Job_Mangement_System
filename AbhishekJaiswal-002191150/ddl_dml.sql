@@ -18,6 +18,9 @@ execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Thomas','Zazper','6502547896',
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Thomas','Zazper','7586020045','Full-Time',07,'thomas@xyzcompnay.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Roger','Federer','6620523005','Full-Time',06,'roger@jimail.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Roger','Federer','8850214560','Intern',06,'roger@jimail.com');
+execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Natalie','shaw','6302547896','Contractor',05,'natalie@xyzcompnay.com');
+execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Natalie','shaw','8850263484','Full-Time',05,'natalie@xyzcompnay.com');
+execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Roger','Merchant','6620145895','Full-Time',04,'roger@abccompany.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Roger','Merchant','4425968575','Intern',04,'roger@abccompany.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Sophia','Johnson','4520159875','Intern',03,'sophia@xyzcompnay.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Sophia','Johnson','9645202658','Full-Time',03,'sophia@xyzcompnay.com');
@@ -25,3 +28,5 @@ execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Dana','Faber','8545712639','Fu
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Dana','Faber','8545712639','Contractor',02,'dana@abc.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Hilary','CLinton','9645729636','Contractor',01,'alex@xyzcompnay.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Hilary','CLinton','9645729636','Intern',01,'alex@xyzcompnay.com');
+
+
