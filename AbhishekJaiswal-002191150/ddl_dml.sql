@@ -1,3 +1,43 @@
+
+declare
+v_sql LONG;
+begin
+v_sql:='create table company(
+company_id number default company_sequence.nextVal not null primary key,
+company_name VARCHAR2(30) not null,
+city VARCHAR2(20) not null,
+state VARCHAR2(20) not null,
+zipcode VARCHAR2(15) not null,
+contact_number VARCHAR2(20) not null
+)';
+  execute immediate v_sql;
+  exception when others then
+    if SQLCODE = -955 then null; else raise; end if;
+end;
+/
+
+declare
+v_sql LONG;
+begin
+v_sql:='create or replace table recruiter(
+recruiter_id number default recruiter_sequence.nextVal not null,
+first_name VARCHAR2(30) not null,
+last_name VARCHAR2(30) not null,
+contact_number VARCHAR2(20) not null unique,
+candidate_type VARCHAR2(20) not null,
+company_id number not null,
+user_account_email VARCHAR2(30) not null unique,
+constraint recruiter_pk primary key (recruiter_id),
+constraint fk_company_id foreign key (company_id) references company(company_id) on delete cascade,
+constraint fk_user_account_email foreign key (user_account_email) references user_account(email) on delete cascade
+)';
+  execute immediate v_sql;
+  exception when others then
+    if SQLCODE = -955 then null; else raise; end if;
+end;
+/
+
+
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Abhishek','Sharma','9654726510','Full-Time',15,'abhishek@xyzcompnay.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Abhishek','Sharma','9645781265','Contractor',15,'abhishek@xyzcompnay.com');
 execute DMDDJOBPORTALSYSADMIN.sp_insertrecruiter('Anit','Khanna','8545120263','Contractor',14,'alex@xyzcompnay.com');
