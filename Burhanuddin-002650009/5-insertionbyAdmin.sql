@@ -4,7 +4,7 @@ into user_type select '1','Job Applicant' from dual union
 select '2','Recruiter' from dual;
 
 
-/*Inserting the data into the table user_account*/
+/*Inserting the data into the user_account table*/
 insert /*+ ignore_row_on_dupkey_index ( user_account(email) ) */ into
 user_account
 (email, user_name, password, date_of_birth, gender, registration_date, user_type_id)
