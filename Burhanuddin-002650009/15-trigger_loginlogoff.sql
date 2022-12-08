@@ -1,3 +1,4 @@
+/*To log user login details*/
 CREATE OR REPLACE TRIGGER login_trigger
 AFTER LOGON ON SCHEMA
 BEGIN
@@ -5,7 +6,7 @@ BEGIN
 END;
 /
 
-
+/*To log user logoff details*/
 CREATE OR REPLACE TRIGGER logoff_trigger
 BEFORE LOGOFF ON SCHEMA
 BEGIN
