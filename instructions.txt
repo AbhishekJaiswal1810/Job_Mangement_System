@@ -1,1 +1,10 @@
-implement all the scripts in order of prefix numbers at each file name one by one
+(Note* - implement all the scripts in order of prefix numbers at each file name one by one)
+
+Script 1 (1-databaseadmin.sql) - should be executed by database admin to create the system admin - dmddjobportalsysadmin
+Script prefixed with numbers 2 to 6 - should be executed by dmddjobportalsysadmin in sequence
+script 7 - should be executed by the applicant1 user
+script 8 - should be executed by companymanager1 user
+script 9,10 - by recruiter1 user
+script 11,12 - by applicant1 user
+scripts 13 to 19 - executed by dmddjobportalsysadmin
+script 20 (optional) - is just to drop the tables/sequences or truncate data as and when required
